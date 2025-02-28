@@ -22,7 +22,7 @@ VALUES ('CEO', 185000, 1),
        ('Resident Awesome Guy', 999888, 7);
 
 
--- Managers: Joshua Pruitt: 1, Seth Jaeger: 6, Alison Pruitt: 11, William Pruitt: 12,  
+-- Managers: Rodd Santos: 1, Seth Jaeger: 6, Alison Pruitt: 11, William Pruitt: 12,  
 -- have a default value at zero so that team members 
 INSERT INTO employee (id, first_name)
 VALUES (0, 'NULL');
@@ -30,7 +30,7 @@ VALUES (0, 'NULL');
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-    ('Joshua', 'Pruitt', 1, 0),
+    ('Rodd', 'Santos', 1, 0),
     -- under management --
     ('Izzi', 'D`Agostino', 2, 1),
     ('Miles', 'Glover', 4, 6),
@@ -50,7 +50,7 @@ VALUES
 
 --  id | first_name | last_name  |          title          |       department       |   salary
 ----+------------+------------+-------------------------+------------------------+------------
---  1 | Joshua     | Pruitt     | CEO                     | Upper Management       |     185000
+--  1 | Rodd       | Santos     | CEO                     | Upper Management       |     185000
 --  2 | Izzi       | D`Agostino | Resident Beautiful Girl | Pretty Girl Department | 9999999999
 --  3 | Miles      | Glover     | Software Engineer       | Engineering            |      86000
 --  4 | Logan      | Davis      | Software Engineer       | Engineering            |      86000
