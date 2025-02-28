@@ -1,184 +1,113 @@
-# 10 SQL: Employee Tracker
+# Challenge-10 (Employee Creator)
 
-## Your Task
+## Introduction
 
-Developers frequently have to create interfaces that allow non-developers to easily view and interact with information stored in databases. These interfaces are called **content management systems (CMS)**. Your assignment this week is to build a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and PostgreSQL.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
-Because this Challenge will require the use of the `Inquirer` package, ensure that you install and use Inquirer version 8.2.4. To do so, use the following command in your project folder: `npm i inquirer@8.2.4`.
+This app lets you create cars!
 
-Because this application won’t be deployed, you’ll also need to create a walkthrough video that demonstrates its functionality and all of the following acceptance criteria being met. You’ll need to submit a link to the video and add it to the README of your project.
+## Table of Contents
 
-## User Story
+- [Required-Technologies](#required-technologies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Code Snippet](#code-snippet)
+- [Features](#features)
+- [Future-Features](#future-features)
+- [License](#license)
+- [Technologies](#technologies-used)
+- [Credits](#credits)
+- [Contact Me](#contact-me)
 
-```md
-AS A business owner
-I WANT to be able to view and manage the departments, roles, and employees in my company
-SO THAT I can organize and plan my business
+## Required Technologies
+
+This project requires node.js and its included npm package manager.\
+You can go to <a href="https://nodejs.org/en/download/package-manager">this</a> website to download node.js and npm. Just follow node's included download instructions!
+
+Postgres SQL is also required to run the project and interface with databases. <a href="https://www.postgresql.org/download/">Postgres Download</a> this link can be used to download the postgres software. Follow the provided guide to install correctly.
+
+## Installation
+
+Once the files are downloaded onto your machine open the project folder in your preferred terminal.\
+To install the necessary dependencies run the "npm install" command to install the required files.
+
+Next go to the .env.EXAMPLE file and add your postgres username and password, then rename the file to just .env. Then navigate to the 'db' directory in your terminal (cd db) and start psql by running 'psql -U {username}'. Once started you can run '\i schema.sql;' to initilize the database. You then have the option to either quit out or run '\i seeds.sql;' for some starter information.
+
+Once you've exited psql navigate back to the projects root directory. Finally, run "npm run start" to run the employee creator!
+
+## Usage
+
+Once you run "npm run start" and have installed all dependancies you will be prompted with a main menu in your terminal. The options include "View all employees", "View all departments", "View all roles", "Add role", "Add department, and "create new employee".
+
+You can use the arrow keys to scroll through the menu and the enter key to select and option. You will be prompted with questions with any of the create or update options. View options only need to be selected to be used, once their information is displayed you can press the arrow keys to once again use the main menu.
+
+## Code Snippet
+
+This code inables the database to be interfaced with.
+
+```
+const pool = new Pool({
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: 'localhost',
+    database: process.env.DB_NAME,
+    port: 5432,
+});
+
+const connectToDb = async () => {
+    try {
+        await pool.connect();
+        console.log("Connected to the Database");
+    } catch (err) {
+        console.log('ERROR Connecting to database:', err);
+        process.exit(1);
+    }
+};
 ```
 
-## Acceptance Criteria
+## Features
 
-```md
-GIVEN a command-line application that accepts user input
-WHEN I start the application
-THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
-WHEN I choose to view all departments
-THEN I am presented with a formatted table showing department names and department ids
-WHEN I choose to view all roles
-THEN I am presented with the job title, role id, the department that role belongs to, and the salary for that role
-WHEN I choose to view all employees
-THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
-WHEN I choose to add a department
-THEN I am prompted to enter the name of the department and that department is added to the database
-WHEN I choose to add a role
-THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
-WHEN I choose to add an employee
-THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
-WHEN I choose to update an employee role
-THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
-```
+Features include:
 
-## Mock-Up
+- View databases like, viewing employees, roles, and departments
+- A menu for selecting functions
+- Options to create new employees, roles, and departments
+- Options to update employee roles
 
-The following video shows an example of the application being used from the command line:
+## Future Features
 
-[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/12-sql-homework-video-thumbnail.png)](https://2u-20.wistia.com/medias/2lnle7xnpk)
+Features that may be implemented in the future include:
 
-## Getting Started
+- giving a choice of options instead of chaning a value.
+- Delete option.
+- Cancel option.
 
-This Challenge will require a video submission. Refer to the [Fullstack Blog Video Submission Guide](https://coding-boot-camp.github.io/full-stack/computer-literacy/video-submission-guide) for additional guidance on creating a video.
+## License
 
-You’ll need to use the [pg package](https://www.npmjs.com/package/pg) to connect to your PostgreSQL database and perform queries, and the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4) to interact with the user via the command line.
+Licensed under the MIT license.
 
-**Important**: You will be committing a file that contains your database credentials. Make sure that your PostgreSQL password is not used for any other personal accounts, because it will be visible on GitHub. In upcoming lessons, you will learn how to better secure this password, or you can start researching npm packages now that could help you.
+## Technologies Used
 
-You might also want to make your queries asynchronous. You can make your queries asynchronous by using the [native async/await keywords](https://node-postgres.com/guides/async-express).
+<ul>
+<li>SQL (for data storage and retreival)
+<li>Node.js (for installing packages as well as building and running code).</li>
+<li>Inquire.js (for question prompts).</li>
+<li>Visual Studio Code (for writing code).</li>
+<li>Mozila Web Docs and W3 Schools (for getting help with JavaScript).</li>
+</ul>
 
-Design the database schema as shown in the following image:
+## Credits
 
-![Database schema includes tables labeled “employee,” role,” and “department.”](./Assets/100-sql-challenge-ERD.png)
+<ul>
+<li>Joshua Pruitt (me)</li>
+<li>Coding bootcamp staff (for their help with Coding)</li>
+<ul>
 
-As the image illustrates, your schema should contain the following three tables:
+## Contact Me
 
-* `department`
-
-  * `id`: `SERIAL PRIMARY KEY`
-
-  * `name`: `VARCHAR(30) UNIQUE NOT NULL` to hold department name
-
-* `role`
-
-  * `id`: `SERIAL PRIMARY KEY`
-
-  * `title`: `VARCHAR(30) UNIQUE NOT NULL` to hold role title
-
-  * `salary`: `DECIMAL NOT NULL` to hold role salary
-
-  * `department_id`: `INTEGER NOT NULL` to hold reference to department role belongs to
-
-* `employee`
-
-  * `id`: `SERIAL PRIMARY KEY`
-
-  * `first_name`: `VARCHAR(30) NOT NULL` to hold employee first name
-
-  * `last_name`: `VARCHAR(30) NOT NULL` to hold employee last name
-
-  * `role_id`: `INTEGER NOT NULL` to hold reference to employee role
-
-  * `manager_id`: `INTEGER` to hold reference to another employee that is the manager of the current employee (`null` if the employee has no manager)
-
-You might want to use a separate file that contains functions for performing specific SQL queries you'll need to use. A constructor function or class could be helpful for organizing these. You might also want to include a `seeds.sql` file to pre-populate your database, making the development of individual features much easier.
-
-## Bonus
-
-Try to add some additional functionality to your application, such as the ability to do the following:
-
-* Update employee managers.
-
-* View employees by manager.
-
-* View employees by department.
-
-* Delete departments, roles, and employees.
-
-* View the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department.
-
-## Grading Requirements
-
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-
-This Challenge is graded based on the following criteria:
-
-### Deliverables: 10%
-
-* Your GitHub repository containing your application code.
-
-### Walkthrough Video: 27%
-
-* A walkthrough video that demonstrates the functionality of the employee tracker must be submitted, and a link to the video should be included in your README file.
-
-* The walkthrough video must show all of the technical acceptance criteria being met.
-
-* The walkthrough video must demonstrate how a user would invoke the application from the command line.
-
-* The walkthrough video must demonstrate a functional menu with the options outlined in the acceptance criteria.
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * Uses the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4).
-
-  * Uses the [pg package](https://www.npmjs.com/package/pg) to connect to a PostgreSQL database.
-
-* Follows the table schema outlined in the Challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality README with description and a link to a walkthrough video.
-
-### Application Quality 10%
-
-* The application user experience is intuitive and easy to navigate.
-
-### Bonus
-
-Fulfilling any of the following can add up to 20 points to your grade. Note that the highest grade you can achieve is still 100:
-
-* Application allows users to update employee managers (2 points).
-
-* Application allows users to view employees by manager (2 points).
-
-* Application allows users to view employees by department (2 points).
-
-* Application allows users to delete departments, roles, and employees (2 points for each).
-
-* Application allows users to view the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department (8 points).
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* A walkthrough video demonstrating the functionality of the application.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+<ul>
+<li>My email: joshuapruitt6484@gmail.com</li>
+<li><a href=https://github.com/JoshuaPruitt>My GitHub</a></li>
+<li><a href=https://www.linkedin.com/in/joshua-pruitt-1a494a311>My LinkedIn</a></li>
+</ul>
