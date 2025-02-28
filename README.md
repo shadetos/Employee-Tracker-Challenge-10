@@ -17,13 +17,9 @@ This app lets you create cars!
 - [Future-Features](#future-features)
 - [License](#license)
 - [Technologies](#technologies-used)
-- [Credits](#credits)
-- [Contact Me](#contact-me)
+
 
 ## Required Technologies
-
-This project requires node.js and its included npm package manager.\
-You can go to <a href="https://nodejs.org/en/download/package-manager">this</a> website to download node.js and npm. Just follow node's included download instructions!
 
 Postgres SQL is also required to run the project and interface with databases. <a href="https://www.postgresql.org/download/">Postgres Download</a> this link can be used to download the postgres software. Follow the provided guide to install correctly.
 
@@ -97,17 +93,3 @@ Licensed under the MIT license.
 <li>Mozila Web Docs and W3 Schools (for getting help with JavaScript).</li>
 </ul>
 
-## Credits
-
-<ul>
-<li>Joshua Pruitt (me)</li>
-<li>Coding bootcamp staff (for their help with Coding)</li>
-<ul>
-
-## Contact Me
-
-<ul>
-<li>My email: joshuapruitt6484@gmail.com</li>
-<li><a href=https://github.com/JoshuaPruitt>My GitHub</a></li>
-<li><a href=https://www.linkedin.com/in/joshua-pruitt-1a494a311>My LinkedIn</a></li>
-</ul>
